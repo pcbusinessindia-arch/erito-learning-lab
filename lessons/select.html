@@ -3,64 +3,230 @@
 
 <head>
     <title>SELECT | Erito Learning Lab</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/lesson.css">
 </head>
 
 <body>
 
-    <h1>SQL: SELECT</h1>
+    <div class="lesson-layout">
 
-    <p>
-        Learn how to retrieve data from a database table.
-    </p>
+        <aside class="sidebar">
 
-    <h2>What is SELECT?</h2>
+            <div class="logo">
+                Erito Learning Lab
+            </div>
 
-    <p>
-        SELECT is used to retrieve data from one or more
-        columns of a database table.
-    </p>
+            <div class="logo-subtitle">
+                SQL Practice Environment
+            </div>
 
-    <h2>Customers Table</h2>
+            <h3>SQL Fundamentals</h3>
 
-    <table border="1">
+            <ul class="lesson-list">
 
-        <thead>
-            <tr>
-                <th>id</th>
-                <th>name</th>
-                <th>city</th>
-            </tr>
-        </thead>
+                <li>
+                    <a href="select.html" class="active">
+                        ✓ SELECT
+                    </a>
+                </li>
 
-        <tbody id="customerTable">
-            <tr>
-                <td colspan="3">Loading...</td>
-            </tr>
-        </tbody>
+                <li>
+                    <a href="#">
+                        ○ WHERE
+                    </a>
+                </li>
 
-    </table>
+                <li>
+                    <a href="#">
+                        ○ ORDER BY
+                    </a>
+                </li>
 
-    <h2>Try It Yourself</h2>
+                <li>
+                    <a href="#">
+                        ○ GROUP BY
+                    </a>
+                </li>
 
-    <p>
-        Write a SELECT query to retrieve customer names.
-    </p>
+                <li>
+                    <a href="#">
+                        ○ JOIN
+                    </a>
+                </li>
 
-    <textarea id="sqlInput" rows="6" cols="50">SELECT name
+            </ul>
+
+
+            <div class="progress-section">
+
+                <div class="progress-label">
+                    <span>Course Progress</span>
+                    <span>20%</span>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <main class="main-content">
+
+            <a href="../index.html" class="back-link">
+                ← Back to Learning Lab
+            </a>
+
+
+            <div class="lesson-header">
+
+                <div class="lesson-label">
+                    SQL Fundamentals · Lesson 01
+                </div>
+
+                <div class="lesson-title-row">
+
+                    <h1>SELECT</h1>
+
+                    <span class="difficulty">
+                        Beginner
+                    </span>
+
+                </div>
+
+                <p>
+                    Learn how to retrieve data from a database table.
+                </p>
+
+            </div>
+
+
+            <section class="card">
+
+                <h2>What is SELECT?</h2>
+
+                <p>
+                    SELECT is used to retrieve data from one or more
+                    columns of a database table.
+                </p>
+
+                <h3>Basic Syntax</h3>
+
+                <pre><code>SELECT column_name
+FROM table_name;</code></pre>
+
+            </section>
+
+
+            <section class="card">
+
+                <h2>Customers Table</h2>
+
+                <p>
+                    This data is coming directly from MySQL.
+                </p>
+
+                <table class="data-table">
+
+                    <thead>
+
+                        <tr>
+                            <th>id</th>
+                            <th>name</th>
+                            <th>city</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="customerTable">
+
+                        <tr>
+                            <td colspan="3">Loading...</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </section>
+
+
+            <section class="card challenge">
+
+                <h2>🎯 Challenge</h2>
+
+                <p class="challenge-text">
+                    Write a SELECT query that retrieves only
+                    the customer names.
+                </p>
+
+                <div class="hint">
+
+                    <button id="hintButton">
+                        💡 Show Hint
+                    </button>
+
+                    <div id="hintText" class="hint-text">
+                        Select the <strong>name</strong> column
+                        from the <strong>customers</strong> table.
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section class="card">
+
+                <h2>SQL Editor</h2>
+
+                <div class="editor">
+
+                    <div class="editor-header">
+                        <span>SQL</span>
+                        <span>MySQL</span>
+                    </div>
+
+                    <textarea id="sqlInput">SELECT name
 FROM customers;</textarea>
 
-    <br><br>
+                </div>
 
-    <button id="runButton">Run Query</button>
+                <div class="button-row">
 
-    <h3>Result</h3>
+                    <button id="runButton">
+                        ▶ Run Query
+                    </button>
 
-    <div id="queryResult">
-        Your result will appear here.
+                    <button id="resetButton">
+                        ↺ Reset
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <section class="card">
+
+                <h2>Result</h2>
+
+                <div id="queryResult">
+                    Run your query to see the result.
+                </div>
+
+            </section>
+
+        </main>
+
     </div>
 
+
     <script>
+
+        // Load customers
 
         fetch("http://127.0.0.1:5000/api/customers")
 
@@ -89,16 +255,207 @@ FROM customers;</textarea>
             })
 
             .catch(error => {
-                console.error("Error:", error);
+
+                console.error("Error loading customers:", error);
+
             });
 
+
+        // Hint
+
+        document.getElementById("hintButton").addEventListener("click", function () {
+
+            const hint = document.getElementById("hintText");
+
+            if (hint.style.display === "block") {
+
+                hint.style.display = "none";
+
+                this.textContent = "💡 Show Hint";
+
+            } else {
+
+                hint.style.display = "block";
+
+                this.textContent = "💡 Hide Hint";
+
+            }
+
+        });
+
+
+        // Run SQL
 
         document.getElementById("runButton").addEventListener("click", function () {
 
             const query = document.getElementById("sqlInput").value;
 
-            document.getElementById("queryResult").textContent =
-                "Query received: " + query;
+            const result = document.getElementById("queryResult");
+
+            const button = document.getElementById("runButton");
+
+            button.textContent = "⏳ Running...";
+
+            button.disabled = true;
+
+            result.innerHTML = "Running query...";
+
+
+            fetch("http://127.0.0.1:5000/api/query", {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    query: query
+                })
+
+            })
+
+            .then(response => response.json())
+
+            .then(data => {
+
+                result.innerHTML = "";
+
+
+                // Database error
+
+                if (data.error) {
+
+                    const errorMessage = document.createElement("div");
+
+                    errorMessage.className = "result-message";
+
+                    errorMessage.textContent =
+                        "❌ Query Error: " + data.error;
+
+                    result.appendChild(errorMessage);
+
+                    return;
+                }
+
+
+                // Normalize SQL
+
+                const normalizedQuery = query
+                    .trim()
+                    .toLowerCase()
+                    .replace(/\s+/g, " ")
+                    .replace(/;$/, "");
+
+
+                const expectedQuery = "select name from customers";
+
+
+                // Feedback
+
+                const feedback = document.createElement("div");
+
+                feedback.className = "result-message";
+
+
+                if (normalizedQuery === expectedQuery) {
+
+                    feedback.textContent =
+                        "✅ Correct! You selected only the name column.";
+
+                } else if (normalizedQuery.includes("select city")) {
+
+                    feedback.textContent =
+                        "❌ You selected the city column. This challenge asks for the name column.";
+
+                } else {
+
+                    feedback.textContent =
+                        "❌ Not quite. The challenge asks you to retrieve only the name column.";
+
+                }
+
+                result.appendChild(feedback);
+
+
+                // Result table
+
+                const table = document.createElement("table");
+
+                table.className = "result-table";
+
+
+                const headerRow = document.createElement("tr");
+
+
+                data.columns.forEach(column => {
+
+                    const header = document.createElement("th");
+
+                    header.textContent = column;
+
+                    headerRow.appendChild(header);
+
+                });
+
+
+                table.appendChild(headerRow);
+
+
+                data.rows.forEach(row => {
+
+                    const tableRow = document.createElement("tr");
+
+
+                    row.forEach(value => {
+
+                        const cell = document.createElement("td");
+
+                        cell.textContent = value;
+
+                        tableRow.appendChild(cell);
+
+                    });
+
+
+                    table.appendChild(tableRow);
+
+                });
+
+
+                result.appendChild(table);
+
+            })
+
+            .catch(error => {
+
+                result.innerHTML =
+                    "❌ Could not connect to the SQL server.";
+
+                console.error("Query error:", error);
+
+            })
+
+            .finally(() => {
+
+                button.textContent = "▶ Run Query";
+
+                button.disabled = false;
+
+            });
+
+        });
+
+
+        // Reset
+
+        document.getElementById("resetButton").addEventListener("click", function () {
+
+            document.getElementById("sqlInput").value =
+                "SELECT name\nFROM customers;";
+
+            document.getElementById("queryResult").innerHTML =
+                "Run your query to see the result.";
 
         });
 
