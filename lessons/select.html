@@ -34,19 +34,31 @@
         </thead>
 
         <tbody id="customerTable">
-
             <tr>
                 <td colspan="3">Loading...</td>
             </tr>
-
         </tbody>
 
     </table>
 
-    <h2>Example</h2>
+    <h2>Try It Yourself</h2>
 
-    <pre><code>SELECT name
-FROM customers;</code></pre>
+    <p>
+        Write a SELECT query to retrieve customer names.
+    </p>
+
+    <textarea id="sqlInput" rows="6" cols="50">SELECT name
+FROM customers;</textarea>
+
+    <br><br>
+
+    <button id="runButton">Run Query</button>
+
+    <h3>Result</h3>
+
+    <div id="queryResult">
+        Your result will appear here.
+    </div>
 
     <script>
 
@@ -77,10 +89,18 @@ FROM customers;</code></pre>
             })
 
             .catch(error => {
-
                 console.error("Error:", error);
-
             });
+
+
+        document.getElementById("runButton").addEventListener("click", function () {
+
+            const query = document.getElementById("sqlInput").value;
+
+            document.getElementById("queryResult").textContent =
+                "Query received: " + query;
+
+        });
 
     </script>
 
