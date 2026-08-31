@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>SELECT | Erito Learning Lab</title>
     <link rel="stylesheet" href="../style.css">
@@ -16,19 +17,73 @@
     <h2>What is SELECT?</h2>
 
     <p>
-        SELECT is used to retrieve data from one or more columns
-        of a database table.
+        SELECT is used to retrieve data from one or more
+        columns of a database table.
     </p>
 
-    <h2>Basic Syntax</h2>
+    <h2>Customers Table</h2>
 
-    <pre><code>SELECT column_name
-FROM table_name;</code></pre>
+    <table border="1">
+
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>city</th>
+            </tr>
+        </thead>
+
+        <tbody id="customerTable">
+
+            <tr>
+                <td colspan="3">Loading...</td>
+            </tr>
+
+        </tbody>
+
+    </table>
 
     <h2>Example</h2>
 
     <pre><code>SELECT name
 FROM customers;</code></pre>
 
+    <script>
+
+        fetch("http://127.0.0.1:5000/api/customers")
+
+            .then(response => response.json())
+
+            .then(customers => {
+
+                const table = document.getElementById("customerTable");
+
+                table.innerHTML = "";
+
+                customers.forEach(customer => {
+
+                    const row = document.createElement("tr");
+
+                    row.innerHTML = `
+                        <td>${customer.id}</td>
+                        <td>${customer.name}</td>
+                        <td>${customer.city}</td>
+                    `;
+
+                    table.appendChild(row);
+
+                });
+
+            })
+
+            .catch(error => {
+
+                console.error("Error:", error);
+
+            });
+
+    </script>
+
 </body>
+
 </html>
