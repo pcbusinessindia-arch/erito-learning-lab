@@ -1,5 +1,11 @@
-const button = document.querySelector(".lesson-card button");
+const startButton = document.getElementById("startButton");
+const lessonPopup = document.getElementById("lessonPopup");
+const closeButton = document.getElementById("closeButton");
 
-button.addEventListener("click", function () {
-    alert("Welcome! Let's learn SELECT.");
+startButton.addEventListener("click", function () {
+    lessonPopup.style.display = "block";
+});
+
+closeButton.addEventListener("click", function () {
+    lessonPopup.style.display = "none";
 });
