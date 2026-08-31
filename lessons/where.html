@@ -2,13 +2,13 @@
 <html>
 
 <head>
-    <title>SELECT | Erito Learning Lab</title>
+    <title>WHERE | Erito Learning Lab</title>
     <link rel="stylesheet" href="../css/lesson.css">
 </head>
 
 <body
-    data-expected-query="select name from customers"
-    data-default-query="SELECT name&#10;FROM customers;"
+    data-expected-query="select * from customers where city = 'kolkata'"
+    data-default-query="SELECT *&#10;FROM customers&#10;WHERE city = 'Kolkata';"
 >
 
     <div class="lesson-layout">
@@ -28,14 +28,14 @@
             <ul class="lesson-list">
 
                 <li>
-                    <a href="select.html" class="active">
+                    <a href="select.html">
                         ✓ SELECT
                     </a>
                 </li>
 
                 <li>
-                    <a href="#">
-                        ○ WHERE
+                    <a href="where.html" class="active">
+                        ✓ WHERE
                     </a>
                 </li>
 
@@ -63,7 +63,7 @@
 
                 <div class="progress-label">
                     <span>Course Progress</span>
-                    <span>20%</span>
+                    <span>40%</span>
                 </div>
 
                 <div class="progress-bar">
@@ -85,12 +85,12 @@
             <div class="lesson-header">
 
                 <div class="lesson-label">
-                    SQL Fundamentals · Lesson 01
+                    SQL Fundamentals · Lesson 02
                 </div>
 
                 <div class="lesson-title-row">
 
-                    <h1>SELECT</h1>
+                    <h1>WHERE</h1>
 
                     <span class="difficulty">
                         Beginner
@@ -99,7 +99,7 @@
                 </div>
 
                 <p>
-                    Learn how to retrieve data from a database table.
+                    Learn how to filter rows based on a condition.
                 </p>
 
             </div>
@@ -107,17 +107,18 @@
 
             <section class="card">
 
-                <h2>What is SELECT?</h2>
+                <h2>What is WHERE?</h2>
 
                 <p>
-                    SELECT is used to retrieve data from one or more
-                    columns of a database table.
+                    WHERE is used to filter records and return
+                    only the rows that match a specific condition.
                 </p>
 
                 <h3>Basic Syntax</h3>
 
                 <pre><code>SELECT column_name
-FROM table_name;</code></pre>
+FROM table_name
+WHERE condition;</code></pre>
 
             </section>
 
@@ -160,8 +161,8 @@ FROM table_name;</code></pre>
                 <h2>🎯 Challenge</h2>
 
                 <p class="challenge-text">
-                    Write a SELECT query that retrieves only
-                    the customer names.
+                    Write a SELECT query that returns only
+                    customers from Kolkata.
                 </p>
 
                 <div class="hint">
@@ -172,8 +173,8 @@ FROM table_name;</code></pre>
 
                     <div id="hintText" class="hint-text">
 
-                        Select the <strong>name</strong> column
-                        from the <strong>customers</strong> table.
+                        Use <strong>WHERE</strong> to filter the
+                        <strong>city</strong> column.
 
                     </div>
 
@@ -193,8 +194,9 @@ FROM table_name;</code></pre>
                         <span>MySQL</span>
                     </div>
 
-                    <textarea id="sqlInput">SELECT name
-FROM customers;</textarea>
+                    <textarea id="sqlInput">SELECT *
+FROM customers
+WHERE city = 'Kolkata';</textarea>
 
                 </div>
 
@@ -227,8 +229,6 @@ FROM customers;</textarea>
 
     </div>
 
-
-    <!-- Reusable SQL lesson engine -->
 
     <script src="../js/lesson.js"></script>
 
