@@ -12,8 +12,12 @@
     <p>Learn SQL by actually writing SQL.</p>
 
     <div class="lesson-card">
-        <h2>SELECT</h2>
+        <h2>
+            <a href="lessons/select.html">SELECT</a>
+        </h2>
+
         <p>Learn how to retrieve data from a table.</p>
+
         <button id="startButton">Start Learning</button>
     </div>
 
@@ -29,15 +33,19 @@
 
             <h3>Basic Syntax</h3>
 
-            <pre><code>SELECT column_name
-FROM table_name;</code></pre>
+            <pre><code id="sqlExample">SELECT name
+FROM customers;</code></pre>
+
+            <button id="exampleButton">Show another example</button>
+
+            <br><br>
 
             <button id="closeButton">Got it</button>
 
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="js/app.js"></script>
 
 </body>
 </html>

@@ -22,6 +22,11 @@ h1 {
     margin-top: 0;
 }
 
+.lesson-card a {
+    color: #1f2937;
+    text-decoration: none;
+}
+
 .lesson-card button {
     padding: 10px 18px;
     border: none;
