@@ -1,0 +1,30 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f7fa;
+    margin: 0;
+    padding: 40px;
+}
+
+h1 {
+    color: #1f2937;
+}
+
+.lesson-card {
+    background-color: white;
+    width: 300px;
+    padding: 25px;
+    margin-top: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.lesson-card h2 {
+    margin-top: 0;
+}
+
+.lesson-card button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
